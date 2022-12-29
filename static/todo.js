@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "http://127.0.0.1:5000/api";
 
 function generateCupcakeHTML(cupcake) {
     return `
@@ -24,12 +24,13 @@ function generateCupcakeHTML(cupcake) {
 //   $(this).parent().remove()
 // }
 async function showInitialCupcakes() {
-    const response =  axios.get(`${BASE_URL}/todos`);
+    const response =  await axios.get(`${BASE_URL}/todos`);
   
     for (let cupcakeData of response.data.cupcakes) {
       let newCupcake = $(generateCupcakeHTML(cupcakeData));
       $("#cupcakes-list").append(newCupcake);
     }
+}
 
 $("#new-cupcake-form").on("submit", async function (evt) {
     evt.preventDefault();

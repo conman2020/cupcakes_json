@@ -44,7 +44,7 @@ def create_todo():
         flavor=data['flavor'],
         rating=data['rating'],
         size=data['size'],
-        image=data['image'] or None)
+        image_url=data['image_url'] or None)
     db.session.add(new_cup)
     db.session.commit()
     response_json = jsonify(cupcake=new_cup.to_dict())
